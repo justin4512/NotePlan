@@ -1,0 +1,188 @@
+# macOS Miniconda + Python 虛擬環境完整指令集 …
+
+這份指南教你如何在 macOS 上安裝 Miniconda，建立 Python 虛擬環境，以及管理專案套件，適合初學者。
+---
+## 1️⃣ 安裝 Miniconda
+### 方法 1：圖形介面安裝
+1. 下載 Miniconda macOS `.pkg` 安裝檔：[Miniconda 官方下載頁](https://docs.conda.io/en/latest/miniconda.html)
+2. 打開 Finder，找到下載的 `Miniconda3-latest-MacOSX-x86_64.pkg`
+3. 雙擊安裝檔，依照畫面步驟完成安裝
+4. 打開 Terminal 測試安裝：
+```bash
+conda --version
+```
+### 方法 2：Terminal 安裝（推薦 `.sh` 腳本）
+1. 下載 Miniconda macOS bash installer (`.sh`) 檔
+2. 在 Terminal 執行安裝：
+```bash
+bash ~/Downloads/Miniconda3-latest-MacOSX-x86_64.sh
+```
+3. 跟隨提示完成安裝，選擇自動初始化 shell
+4. 重新打開 Terminal 測試：
+```bash
+#設定環境變數到路徑（預設是安裝在/opt/miniconda3/)
+export PATH="/opt/miniconda3/bin:$PATH"
+conda --version
+
+#會看到conda 25.x.x版本代表成功
+```
+---
+## 2️⃣ 基本 Conda 操作
+### 更新 Conda
+```bash
+conda update conda
+```
+### 查看已建立環境
+```bash
+conda info --envs
+```
+### 建立新環境
+```bash
+conda create -n myproject python=3.11
+```
+### 啟用環境
+```bash
+conda activate myproject
+```
+### 安裝套件（只在此環境）
+```bash
+conda install numpy pandas flask
+```
+### 停用環境
+```bash
+conda deactivate
+```
+### 刪除環境
+```bash
+conda remove -n myproject --all
+```
+## 3️⃣ 專案分享與管理環境
+### 生成環境依賴檔
+```bash
+conda activate myproject
+conda env export > environment.yml
+```
+### 使用 yml 建立環境
+```bash
+conda env create -f environment.yml
+```
+## 4️⃣ 建議開發流程（每個專案各自環境）
+1. 建立專案資料夾
+```bash
+mkdir ~/projects/myproject
+cd ~/projects/myproject
+```
+2. 建立虛擬環境
+```bash
+conda create -n myproject python=3.11
+conda activate myproject
+```
+3. 安裝專案需要的套件
+```bash
+conda install flask requests pandas
+```
+4. 開發程式
+```bash
+python main.py
+```
+5. 切換專案
+```bash
+conda deactivate
+conda activate anotherproject
+```
+6. 備份或分享環境
+```bash
+conda env export > environment.yml
+```
+---
+## 5️⃣ 小技巧
+
+- **快速切換環境**：`conda activate myproject` / `conda deactivate`
+- **找套件版本**：`conda search package_name`
+- **使用 pip 安裝套件**（conda 沒的）：`pip install package_name`
+#IT #Python #Conda
+# Git 與 SSH 設定完整流程 …
+## 1️⃣ 安裝與檢查 Git
+### 檢查 Git 是否已安裝
+```bash
+git --version
+```
+## 2️⃣ 建立 SSH 金鑰並加入 GitHub
+##### 2.1 產生新的 SSH 金鑰
+```bash
+ssh-keygen -t ed25519 -C "你的GitHub帳號Email"
+```
+- 建議使用 **ed25519** 演算法（比 RSA 安全且短）。
+- 系統會詢問：
+  - 儲存路徑（直接按 Enter 代表預設 `~/.ssh/id_ed25519`）
+  - 金鑰密碼（可留空直接 Enter）
+---
+### 2.2 啟動 SSH Agent 並加入金鑰
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+---
+### 2.3 複製公鑰內容
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+將顯示的內容（整行）複製起來。
+---
+### 2.4 在 GitHub 加入金鑰
+1. 登入 [GitHub](https://github.com)
+2. 點右上角頭像 → **Settings**
+3. 左側選單選擇 **SSH and GPG keys**
+4. 按 **New SSH key**
+5. **Title** 可隨意填，例如「My Laptop」
+6. **Key** 欄貼上剛剛複製的金鑰內容
+7. 按 **Add SSH key** 完成
+---
+### 2.5 測試 SSH 連線
+```bash
+ssh -T git@github.com
+```
+第一次會問是否信任 GitHub，輸入 `yes` 後應該會顯示：
+```
+Hi <你的GitHub帳號>! You've successfully authenticated...
+```
+---
+## 3️⃣ 從遠端拉取到空資料夾
+假設你有一個空資料夾要拉取 GitHub 專案：
+### 3.1 切換到目標資料夾
+```bash
+Cd /你的/空資料夾路徑
+```
+### 3.2 初始化 Git
+```bash
+git init
+```
+### 3.3 加入遠端倉庫
+```bash
+git remote add origin git@github.com:<你的帳號>/<專案名稱>.git
+```
+> 這裡使用 SSH 格式，而非 HTTPS。
+---
+### 3.4 拉取遠端資料
+假設遠端分支是 `main`：
+```bash
+git pull origin main
+```
+如果是 `master`：
+```bash
+git pull origin master
+```
+---
+## 4️⃣ 常用 Git 指令速查表
+| 功能 | 指令 |
+| --- | --- |
+| 查看 Git 狀態 | `git status` |
+| 查看遠端倉庫 | `git remote -v` |
+| 新增檔案到暫存區 | `git add .` |
+| 提交變更 | `git commit -m "提交訊息"` |
+| 更改提交 | `git commit —amend -m “新的提交訊息”` ＆ `git push origin 分支名稱 —force` |
+| 推送到遠端 | `git push origin main` |
+| 拉取遠端更新 | `git pull origin main` |
+| 查看分支 | `git branch` |
+| 切換分支 | `git checkout <分支>` |
+#IT #Git

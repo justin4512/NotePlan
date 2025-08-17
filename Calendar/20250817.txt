@@ -1,4 +1,4 @@
-# #黑蘋果 BIOS 設定步驟整理 
+# #黑蘋果 BIOS 設定步驟整理  …
  ## 步驟 1 **(Advanced)**
 - 進入 #BIOS系統，繁體應該是叫進階， 英文是叫 **Advanced**   
 - 選**PCIe/PCI Subsystem Settings**  
@@ -52,3 +52,53 @@
 - 確認**Boot Option #2** 是不是 **UEFI OS(SSD＋ 名稱 ＋ 容量)**
 - 設定****Fixed Boot Order Priority**的**Boot Option #1** 為 **UEFI Hard Disk : Mac**  
 #IT #Mac
+＃NotePlan
+#  查看 #Github 運用 #SSH 更新  …
+ ## 確認有無密鑰
+- 進入 指定資料夾 
+```bash
+ls ~/.ssh
+```
+- 如果有出現以下畫面，代表電腦中已有公私密鑰
+```bash
+id_ed25519      id_ed25519.pub
+```
+ ## 確認有無密鑰
+```bash
+ssh -T git@github.com
+```
+- 成功登入會出現以下畫面
+```bash
+Hi justin4512! You've successfully authenticated, but GitHub does not provide shell access.
+```
+- 進入 指定資料夾 
+```bash
+cd /Users/Justin/Library/Application Support/co.noteplan.NotePlan3
+```
+  ## Pull 下載更新
+```bash
+git reset --hard
+git pull
+```
+# 運用 #Github 進行 #NotePlan 手動更新  …
+ ## Push 上傳更新
+- 進入 指定資料夾 
+```bash
+cd /Users/Justin/Library/Application Support/co.noteplan.NotePlan3
+```
+- 先更新本地git
+```bash
+git add .
+```
+```bash
+git commit -m "08171415更新"
+```
+```bash
+git push
+```
+-  --- --- --- --- --- --- --- --- --- ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+  ## Pull 下載更新
+```bash
+git reset --hard
+git pull
+```

@@ -1,6 +1,6 @@
-# 黑蘋果BIOS 設定步驟整理  …
+# #黑蘋果 BIOS 設定步驟整理 
  ## 步驟 1 **(Advanced)**
-- 進入BIOS系統，繁體應該是叫進階， 英文是叫 **Advanced**   
+- 進入 #BIOS系統，繁體應該是叫進階， 英文是叫 **Advanced**   
 - 選**PCIe/PCI Subsystem Settings**  
 - **Above 4G memory / Crypto Currency mining** → 設置為**Enabled**
  --- --- --- --- --- --- --- --- --- ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
@@ -51,3 +51,4 @@
 - 確認**Boot Option #1** 是不是 **Ｍac** 
 - 確認**Boot Option #2** 是不是 **UEFI OS(SSD＋ 名稱 ＋ 容量)**
 - 設定****Fixed Boot Order Priority**的**Boot Option #1** 為 **UEFI Hard Disk : Mac**  
+#IT #Mac

@@ -80,53 +80,7 @@ cd /Users/Justin/Library/Application Support/co.noteplan.NotePlan3
 git reset --hard
 git pull
 ```
-# 運用 #Github 進行 #NotePlan 手動更新 
- ## 第一次Pull
-- 建立 SSH 金鑰並加入 GitHub 
-```bash
-ssh-keygen -t ed25519 -C "你的GitHub帳號Email"
-```
-- 啟動 SSH Agent 並加入金鑰
-```bash
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
-- 複製公鑰內容
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
--  將顯示的內容（整行）複製起來。 
-- 在 GitHub 加入金鑰
-1. 登入 [GitHub](https://github.com)
-2. 點右上角頭像 → **Settings**
-3. 左側選單選擇 **SSH and GPG keys**
-4. 按 **New SSH key**
-5. **Title** 可隨意填，例如「My Laptop」
-6. **Key** 欄貼上剛剛複製的金鑰內容
-7. 按 **Add SSH key** 完成。
-8. 測試 SSH 連線
-```ssh
-ssh -T git@github.com
-```
-9. 第一次會問是否信任 GitHub，輸入 `yes` 後應該會顯示：
-```ssh
-Hi <你的GitHub帳號>! You've successfully authenticated...
-```
-- --- --- --- --- --- --- --- --- --- ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
-- 進入 指定資料夾 
-```bash
-cd /Users/Justin/Library/Application Support
-```
-- 先更新本地git
-```bash
-git clone git@github.com:justin4512/NotePlan.git "co.noteplan.NotePlan3"
-```
-```bash
-cd "co.noteplan.NotePlan3"
-```
-```bash
-git pull
-```
+# 運用 #Github 進行 #NotePlan 手動更新  …
  ## Push 上傳更新
 - 進入 指定資料夾 
 ```bash
@@ -143,9 +97,8 @@ git commit -m "08171415更新"
 git push
 ```
 -  --- --- --- --- --- --- --- --- --- ------ --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
-  ## Pull 下載更新 …
+  ## Pull 下載更新
 ```bash
 git reset --hard
 git pull
 ```
-

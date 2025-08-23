@@ -53,7 +53,7 @@
 - 設定****Fixed Boot Order Priority**的**Boot Option #1** 為 **UEFI Hard Disk : Mac**  
 #IT #Mac
 ＃NotePlan
-#  查看 #Github 運用 #SSH 更新 
+#  查看 #Github 運用 #SSH 更新  …
  ## 確認有無密鑰
 - 進入 指定資料夾 
 ```bash
@@ -70,8 +70,7 @@ ssh -T git@github.com
 - 成功登入會出現以下畫面
 ```bash
 Hi justin4512! You've successfully authenticated, but GitHub does not provide shell access.
-```￼
-![image](20250817_attachments/ChatGPT%20Image%202025%E5%B9%B48%E6%9C%8823%E6%97%A5%20%E4%B8%8B%E5%8D%8805_19_29.jpg)
+```
 - 進入 指定資料夾 
 ```bash
 cd /Users/Justin/Library/Application Support/co.noteplan.NotePlan3

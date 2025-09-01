@@ -1,4 +1,4 @@
-# macOS Miniconda + Python 虛擬環境完整指令集 …
+# macOS #Miniconda + #Python 虛擬環境完整指令集
 
 這份指南教你如何在 macOS 上安裝 Miniconda，建立 Python 虛擬環境，以及管理專案套件，適合初學者。
 ---

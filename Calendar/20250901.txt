@@ -1,0 +1,17 @@
+# #TTYD 帳密設定
+- 進入 #SSH
+```bash
+sudo vi /var/packages/TTYD/var/config.json
+```
+修改 #帳密
+```bash
+user=myuser
+pwd=NewPassw0rd!
+```
+重啟服務
+```bash
+sudo synopkg restart TTYD
+```
+
+- 再到DSM套件裡去重啟TTYD服務
+- #IT
